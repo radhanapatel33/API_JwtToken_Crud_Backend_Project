@@ -27,7 +27,7 @@ app.use(express.urlencoded({ extented: true }));
 app.use('./uploads', express.static(path.join(import.meta.dirname, 'uploads')));
 
 app.use(cors({
-    // origin: 'http://localhost:5173',
+    origin: 'http://localhost:5173',
     methods : ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
