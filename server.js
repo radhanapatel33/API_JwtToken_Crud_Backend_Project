@@ -17,8 +17,6 @@ const limiter = rateLimit({
     message:'to many request for IP please try again later'
 }) ;
 
-
-
 const app = express();
 // dotenv.config();
 app.use(express.json());
@@ -36,7 +34,6 @@ app.use(limiter);
 app.use('/user', userRouters);
 // app.use(userAuth);
 app.use('/students',userAuth, studentRouters);
-
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
