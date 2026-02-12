@@ -13,7 +13,7 @@ connectDB();
 
 const limiter = rateLimit({
     windowMs:1000*60,
-    max:7,
+    max:50,
     message:'to many request for IP please try again later'
 }) ;
 
@@ -22,7 +22,7 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extented: true }));
 
-app.use('./uploads', express.static(path.join(import.meta.dirname, 'uploads')));
+app.use('/uploads', express.static(path.join(import.meta.dirname, 'uploads')));
 
 app.use(cors({
     origin: 'http://localhost:5173',
