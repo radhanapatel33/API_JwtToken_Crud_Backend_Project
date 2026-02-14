@@ -99,7 +99,7 @@ router.put('/:_id', upload.single('student_photo'), async (req, res) => {
         let existingStudent = await studentModel.findById(req.params._id);
 
         //Image update
-        if (req.file) {
+        if (req.file.filename) {
             if (existingStudent.student_photo) {
                 let oldFilePath = path.join('./uploads', existingStudent.student_photo);
                 fs.unlink(oldFilePath, (err) => {
@@ -109,8 +109,7 @@ router.put('/:_id', upload.single('student_photo'), async (req, res) => {
             req.body.student_photo = req.file.filename;
         }
 
-
-        let data = await studentModel.findOneAndUpdate({ _id: req.params._id }, req.body, { new: true });
+        let data = await studentModel.findByIdAndUpdate(req.params._id, req.body, { new: true });
         if (!data) res.status(404).json({ message: "Student Data Not found" });
         res.json(data);
     }
