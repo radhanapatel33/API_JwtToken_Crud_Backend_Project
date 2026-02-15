@@ -99,7 +99,7 @@ router.put('/:_id', upload.single('student_photo'), async (req, res) => {
         let existingStudent = await studentModel.findById(req.params._id);
 
         //Image update
-        if (req.file.filename) {
+        if (req.file) {
             if (existingStudent.student_photo) {
                 let oldFilePath = path.join('./uploads', existingStudent.student_photo);
                 fs.unlink(oldFilePath, (err) => {
