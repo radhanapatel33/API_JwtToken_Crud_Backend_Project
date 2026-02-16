@@ -57,12 +57,12 @@ router.get('/Page', async (req, res) => {
 
 router.post('/', upload.single('student_photo'), async (req, res) => {
     try {
-        let data = await studentModel.create(req.body);
         if (req.file) {
-            data.student_photo = req.file.filename
+            req.body.student_photo = req.file.filename
         }
-        let newStudentData = await data.save();
-        res.status(200).json(newStudentData);
+        let data = await studentModel.create(req.body);
+        console.log(data);
+        res.status(201).json(data);
     }
     catch (error) {
         res.status(500).json({ message: error.message });
