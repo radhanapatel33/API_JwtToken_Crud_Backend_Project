@@ -12,10 +12,10 @@ dotenv.config();
 connectDB();
 
 const limiter = rateLimit({
-    windowMs:1000*60,
-    max:50,
-    message:'to many request for IP please try again later'
-}) ;
+    windowMs: 1000 * 60,
+    max: 50,
+    message: 'to many request for IP please try again later'
+});
 
 const app = express();
 // dotenv.config();
@@ -25,19 +25,20 @@ app.use(express.urlencoded({ extented: true }));
 app.use('/uploads', express.static(path.join(import.meta.dirname, 'uploads')));
 
 app.use(cors({
-    origin: 'http://localhost:5173',
-    methods : ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: ['http://localhost:5173',
+        'https://mern-crud-auth-three.vercel.app'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
 app.use(limiter);
 app.use('/user', userRouters);
 // app.use(userAuth);
-app.use('/students',userAuth, studentRouters);
+app.use('/students', userAuth, studentRouters);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
 
-// mongodb+srv://Radhana:radhanarewa@cluster0.2bmdgpi.mongodb.net/?appName=Cluster0
+

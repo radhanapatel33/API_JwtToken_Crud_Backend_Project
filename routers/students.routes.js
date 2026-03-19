@@ -159,5 +159,3 @@ router.get('/search/:key', async (req, res) => {
 
 
 export default router;
-
-// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2OTg2ZDczMWMxNGE1ZjcwNWE1OTI5YTkiLCJ1c2VybmFtZSI6Ik5pc2hhIiwiaWF0IjoxNzcwNDQ0Njg4LCJleHAiOjE3NzA1MzEwODh9.M6pkJ9MGr3SDtn2-28DZXpWhgOIKCCUSwgD_Mwd_wcE
